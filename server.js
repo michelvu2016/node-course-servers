@@ -10,6 +10,8 @@ const currentYear  = new Date().getFullYear();
 
 const MAINTENANCE = false;
 
+const port = process.env.PORT | 3000;
+
 var app = express();
 
 hbs.registerPartials(__dirname+'/views/partials');
@@ -86,4 +88,6 @@ app.get('/info', (req, res) => {
 	});
 });
 
-app.listen(3000);
+app.listen(port);
+
+console.log(`Server running on port ${port}`);
