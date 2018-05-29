@@ -10,7 +10,16 @@ const currentYear  = new Date().getFullYear();
 
 const MAINTENANCE = false;
 
-const port = process.env.PORT | 3000;
+var port = 3000;
+var host = 'localhost';
+
+if (process.env.PORT)
+	{
+	   port = process.env.PORT;
+	   host = '0.0.0.0';
+	}
+
+
 
 var app = express();
 
@@ -88,6 +97,9 @@ app.get('/info', (req, res) => {
 	});
 });
 
-app.listen(port);
+app.listen(port, host, () => {
+	
+	console.log(`Server listening on port ${port}`);
+});
 
-console.log(`Server running on port ${port}`);
+
